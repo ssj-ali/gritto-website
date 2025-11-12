@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Privacy - GRITTO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Nitro';
+            src: url('./Nitro.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0F0F23;
+            color: #FFFFFF;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* Background effects */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(66, 133, 244, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(15, 157, 88, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(145, 119, 199, 0.08) 0%, transparent 50%);
+            animation: bgShift 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgShift {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        /* Full screen spinning gradient */
+        .bg-gradient::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: -40%;
+            width: 180%;
+            height: 180%;
+            background: conic-gradient(from 0deg, 
+                rgba(66, 133, 244, 0.15) 0%, 
+                transparent 25%, 
+                rgba(15, 157, 88, 0.12) 50%, 
+                transparent 75%, 
+                rgba(66, 133, 244, 0.15) 100%);
+            animation: rotate 25s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(66, 133, 244, 0.3);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 60%; left: 90%; animation-delay: 2s; }
+        .particle:nth-child(3) { top: 80%; left: 20%; animation-delay: 4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            background: rgba(15, 15, 35, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #4285F4;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Nitro', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-logo img {
+            width: 40px;
+            height: 40px;
+            filter: drop-shadow(0 0 20px rgba(66, 133, 244, 0.3));
+        }
+
+        .contact-nav {
+            background: linear-gradient(135deg, #4285F4, #0F9D58);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+        }
+
+        .contact-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(66, 133, 244, 0.4);
+        }
+
+        /* Content */
+        .content {
+            padding: 80px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-family: 'Nitro', sans-serif;
+            font-size: clamp(36px, 6vw, 56px);
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #4285F4 50%, #0F9D58 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        .page-subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .terms-content {
+            background: rgba(26, 26, 46, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            margin-bottom: 60px;
+        }
+
+        .terms-section {
+            margin-bottom: 40px;
+        }
+
+        .terms-section h2 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: #4285F4;
+            font-weight: 600;
+        }
+
+        .terms-section h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            margin-top: 24px;
+            color: #FFFFFF;
+            font-weight: 500;
+        }
+
+        .terms-section p {
+            margin-bottom: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        .terms-section ul {
+            margin-left: 20px;
+            margin-bottom: 16px;
+        }
+
+        .terms-section li {
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-info {
+            background: rgba(66, 133, 244, 0.1);
+            border: 1px solid rgba(66, 133, 244, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 12px;
+            color: #4285F4;
+        }
+
+        .email-link {
+            color: #4285F4;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .terms-content {
+                padding: 24px;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-right {
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="nav-logo">
+                    <img src="logo2.png" alt="GRITTO">
+                    GRITTO
+                </a>
+                <div class="nav-right">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="mailto:help@gritto.fit" class="contact-nav">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        Contact
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="content">
+                <h1 class="page-title">Terms & Privacy</h1>
+                <p class="page-subtitle">Our commitment to your privacy and terms of service</p>
+
+                <div class="terms-content">
+                    <div class="terms-section">
+                        <h2>Terms of Service</h2>
+                        
+                        <h3>Acceptance of Terms</h3>
+                        <p>By accessing and using GRITTO ("the App"), you accept and agree to be bound by the terms and provision of this agreement.</p>
+
+                        <h3>Use License</h3>
+                        <p>Permission is granted to temporarily download one copy of GRITTO for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:</p>
+                        <ul>
+                            <li>Modify or copy the materials</li>
+                            <li>Use the materials for any commercial purpose or for any public display</li>
+                            <li>Attempt to reverse engineer any software contained in GRITTO</li>
+                            <li>Remove any copyright or other proprietary notations from the materials</li>
+                        </ul>
+
+                        <h3>User Accounts</h3>
+                        <p>When you create an account with us, you must provide information that is accurate, complete, and current at all times. You are responsible for safeguarding the password and for all activities under your account.</p>
+
+                        <h3>Fitness Data</h3>
+                        <p>GRITTO is designed to help you track your fitness journey. The app may collect workout data, progress metrics, and health-related information you choose to input. This data is used solely to provide you with personalized fitness insights.</p>
+
+                        <h3>Disclaimer</h3>
+                        <p>GRITTO is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider before beginning any exercise program.</p>
+                    </div>
+
+                    <div class="terms-section">
+                        <h2>Privacy Policy</h2>
+                        
+                        <h3>Information We Collect</h3>
+                        <p>We collect information you provide directly to us, such as when you create an account, use our services, or contact us for support:</p>
+                        <ul>
+                            <li>Account information (name, email address)</li>
+                            <li>Fitness data and workout information</li>
+                            <li>Device information and usage analytics</li>
+                            <li>Communication preferences</li>
+                        </ul>
+
+                        <h3>How We Use Your Information</h3>
+                        <p>We use the information we collect to:</p>
+                        <ul>
+                            <li>Provide, maintain, and improve our services</li>
+                            <li>Process transactions and send related information</li>
+                            <li>Send technical notices, updates, and support messages</li>
+                            <li>Respond to your comments and questions</li>
+                        </ul>
+
+                        <h3>Data Security</h3>
+                        <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no internet transmission is ever completely secure.</p>
+
+                        <h3>Data Retention</h3>
+                        <p>We retain your information for as long as your account is active or as needed to provide services. You may request deletion of your data at any time by contacting us.</p>
+
+                        <h3>Third-Party Services</h3>
+                        <p>Our app may integrate with third-party services (like fitness trackers or health apps). Please review their privacy policies as we are not responsible for their practices.</p>
+                    </div>
+
+                    <div class="terms-section">
+                        <h2>Updates to Terms</h2>
+                        <p>We may update these terms from time to time. We will notify users of any changes by posting the new Terms of Service and Privacy Policy on this page and updating the "Last updated" date.</p>
+                        <p><strong>Last updated:</strong> November 12, 2025</p>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <h3>Questions?</h3>
+                    <p>If you have any questions about these Terms & Privacy Policy, please contact us at:</p>
+                    <a href="mailto:help@gritto.fit" class="email-link">help@gritto.fit</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 GRITTO. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
